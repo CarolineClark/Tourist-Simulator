@@ -7,8 +7,8 @@ public class DialogueController : MonoBehaviour {
 
 	public Text narration;
 	public Text localLine;
-	public Text touristLine;
-	public Text questionLine;
+	// public Text touristLine;
+	public Text statementLine;
 	public Button questionButton1;
 	public Text questionButton1Text;
 	public Button questionButton2;
@@ -23,11 +23,15 @@ public class DialogueController : MonoBehaviour {
 	int wrongAnswers = 0;
 	Answer[] answers = null;
 	bool rightIsCorrect = true;
+	private string[] languages = new string[]{"german", "spanish"};
+	private string language;
+	private CameraController cameraController;
 
 	// Use this for initialization
 	void Start () {
-		
-		TextAsset data = Resources.Load ("german") as TextAsset;
+		cameraController = Camera.main.GetComponent<CameraController>();
+		language = languages[0];
+		TextAsset data = Resources.Load (language) as TextAsset;
 		string dataString = data.ToString ();
 
 		config = JsonUtility.FromJson<DialogueConfig> (dataString);
@@ -37,13 +41,14 @@ public class DialogueController : MonoBehaviour {
 	
 		narration.text = config.narration;
 		localLine.gameObject.SetActive (false);
-		touristLine.gameObject.SetActive (false);
-		questionLine.gameObject.SetActive (false);
+		// touristLine.gameObject.SetActive (false);
+		statementLine.gameObject.SetActive (false);
 		questionButton1.gameObject.SetActive (false);
 		questionButton2.gameObject.SetActive (false);
 
 		questionButton1.onClick.AddListener(delegate() {OnClick (questionButton1);});
 		questionButton2.onClick.AddListener(delegate() {OnClick (questionButton2);});
+
 	}
 	
 	// Update is called once per frame
@@ -51,6 +56,7 @@ public class DialogueController : MonoBehaviour {
 		if (Input.GetButtonDown ("Jump")) {
 			if (state == DialogueState.Narration) {
 				HideNarration ();
+				spawnMatrix.ShowStart(language);
 				ShowQuestion (question);
 			} else if (state == DialogueState.Answer1 ||
 			         state == DialogueState.Answer2 ||
@@ -67,16 +73,16 @@ public class DialogueController : MonoBehaviour {
 		narration.gameObject.SetActive (false);
 	}
 	void ShowQuestion (int question) {
-		questionLine.gameObject.SetActive (true);
+		statementLine.gameObject.SetActive (true);
 		questionButton1.gameObject.SetActive (true);
 		questionButton2.gameObject.SetActive (true);
 
 		localLine.gameObject.SetActive (false);
-		touristLine.gameObject.SetActive (false);
+		// touristLine.gameObject.SetActive (false);
 
 		DialogueLine currLine = config.GetLine (question);
 
-		questionLine.text = currLine.question_base;
+		statementLine.text = currLine.question_base;
 
 		rightIsCorrect = (Random.Range (0f, 1f) > 0.5f) ? true : false;
 
@@ -102,19 +108,18 @@ public class DialogueController : MonoBehaviour {
 	}
 
 	private void PressedQuestionButton1() {
-		Debug.Log("clicking button 1");
-		local.SetRegular();
-		if (rightIsCorrect)
-			spawnMatrix.AnswerQuestionWrong(config.language);
-		else
-			spawnMatrix.AnswerQuestionCorrect(config.language);
+		ButtonCorrectSide(rightIsCorrect);
 	}
 
 	private void PressedQuestionButton2() {
-		Debug.Log("clicking button 1");
-		local.SetPuzzled();
-		if (!rightIsCorrect)
+		ButtonCorrectSide(!rightIsCorrect);
+	}
+
+	void ButtonCorrectSide(bool isCorrect) {
+		if (isCorrect) {
 			spawnMatrix.AnswerQuestionWrong(config.language);
+			cameraController.ScreenShake();
+		}
 		else
 			spawnMatrix.AnswerQuestionCorrect(config.language);
 	}
@@ -123,18 +128,18 @@ public class DialogueController : MonoBehaviour {
 
 		bool isCorrect = CheckAnswer (button);
 
-		questionLine.gameObject.SetActive (false);
+		statementLine.gameObject.SetActive (false);
 		questionButton1.gameObject.SetActive (false);
 		questionButton2.gameObject.SetActive (false);
 
-		touristLine.text = config.GetQuestion (question, isCorrect);
+		// touristLine.text = config.GetQuestion (question, isCorrect);
 		localLine.text = config.GetAnswer (question, isCorrect);
 
 		++question;
 		IncrementState();
 
 		localLine.gameObject.SetActive (true);
-		touristLine.gameObject.SetActive (true);
+		// touristLine.gameObject.SetActive (true);
 	}
 
 	bool CheckAnswer (Button button) {

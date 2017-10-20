@@ -11,7 +11,8 @@ public class ExpressionController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		SetRegular();
+		HideAllSprites();
+		// SetRegular();
 	}
 
 	private void HideAllSprites() {

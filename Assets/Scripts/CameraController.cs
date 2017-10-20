@@ -25,6 +25,7 @@ public class CameraController : MonoBehaviour {
 	}
 
 	public void ScreenShake() {
+		Debug.Log("screen shake");
 		shake = magnitude;
 	}
 }

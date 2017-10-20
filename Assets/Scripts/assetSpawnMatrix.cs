@@ -21,6 +21,10 @@ public class assetSpawnMatrix : MonoBehaviour {
 		speechBubbleBackground.enabled = false;
 	}
 
+	public void ShowStart(string language) {
+		InstantiateWithTransform(Resources.Load(language + "/start") as GameObject);
+	}
+
 	public void AnswerQuestionWrong(string language) {
 		Debug.Log("answered question wrong");
 		AnswerQuestion(language, WRONG);
@@ -36,6 +40,7 @@ public class assetSpawnMatrix : MonoBehaviour {
 			Destroy (prevObj);
 
 		InstantiateWithTransform(Resources.Load(language + "/" + answer) as GameObject);
+		speechBubbleBackground.enabled = true;
 
 		/*
 
@@ -63,7 +68,5 @@ public class assetSpawnMatrix : MonoBehaviour {
 		prevObj = Instantiate (gObject);
 		prevObj.transform.SetParent(gameObject.transform);
 		prevObj.transform.position = transform.position;
-
-		speechBubbleBackground.enabled = true;
 	}
 }
