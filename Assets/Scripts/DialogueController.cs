@@ -104,13 +104,19 @@ public class DialogueController : MonoBehaviour {
 	private void PressedQuestionButton1() {
 		Debug.Log("clicking button 1");
 		local.SetRegular();
-		spawnMatrix.AnswerQuestionCorrect();
+		if (rightIsCorrect)
+			spawnMatrix.AnswerQuestionWrong(config.language);
+		else
+			spawnMatrix.AnswerQuestionCorrect(config.language);
 	}
 
 	private void PressedQuestionButton2() {
 		Debug.Log("clicking button 1");
 		local.SetPuzzled();
-		spawnMatrix.AnswerQuestionWrong();
+		if (!rightIsCorrect)
+			spawnMatrix.AnswerQuestionWrong(config.language);
+		else
+			spawnMatrix.AnswerQuestionCorrect(config.language);
 	}
 
 	public void AnswerQuestion (Button button) {

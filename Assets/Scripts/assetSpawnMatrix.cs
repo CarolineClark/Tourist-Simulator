@@ -7,13 +7,13 @@ public class assetSpawnMatrix : MonoBehaviour {
 
 	public readonly string CORRECT = "correct";
 	public readonly string WRONG = "wrong";
-	public GameObject correct;
-	public GameObject wrong;
-	public GameObject correctcorrect;
-	public GameObject wrongcorrect;
-	public GameObject correctwrong;
-	public GameObject wrongwrong;
-	public GameObject correctcorrectcorrect;
+	// public GameObject correct;
+	// public GameObject wrong;
+	// public GameObject correctcorrect;
+	// public GameObject wrongcorrect;
+	// public GameObject correctwrong;
+	// public GameObject wrongwrong;
+	// public GameObject correctcorrectcorrect;
 	public Image speechBubbleBackground;
 	GameObject prevObj = null;
 
@@ -21,20 +21,24 @@ public class assetSpawnMatrix : MonoBehaviour {
 		speechBubbleBackground.enabled = false;
 	}
 
-	public void AnswerQuestionWrong() {
+	public void AnswerQuestionWrong(string language) {
 		Debug.Log("answered question wrong");
-		AnswerQuestion(WRONG);
+		AnswerQuestion(language, WRONG);
 	}
 
-	public void AnswerQuestionCorrect() {
+	public void AnswerQuestionCorrect(string language) {
 		Debug.Log("answered question correct");
-		AnswerQuestion(CORRECT);
+		AnswerQuestion(language, CORRECT);
 	}
 
-	private void AnswerQuestion (string answer) {
+	private void AnswerQuestion (string language, string answer) {
 		if (prevObj != null)
 			Destroy (prevObj);
-		
+
+		InstantiateWithTransform(Resources.Load(language + "/" + answer) as GameObject);
+
+		/*
+
 		if (answer == "correct")
 			InstantiateWithTransform(correct);
 		else if (answer == "wrong")
@@ -49,6 +53,7 @@ public class assetSpawnMatrix : MonoBehaviour {
 			InstantiateWithTransform(wrongwrong);
 		else if (answer == "correctcorrectcorrect")
 			InstantiateWithTransform(correctcorrectcorrect);
+			*/
 	}
 
 	private void InstantiateWithTransform(GameObject gObject) {
