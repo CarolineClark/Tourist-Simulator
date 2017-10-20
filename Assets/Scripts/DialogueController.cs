@@ -87,7 +87,6 @@ public class DialogueController : MonoBehaviour {
 			questionButton2Text.text = currLine.question_wrong;
 			questionButton1Text.text = currLine.question_right;
 		}
-
 		IncrementState();
 	}
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class assetSpawnMatrix : MonoBehaviour {
 
@@ -12,14 +13,13 @@ public class assetSpawnMatrix : MonoBehaviour {
 	public GameObject correctwrong;
 	public GameObject wrongwrong;
 	public GameObject correctcorrectcorrect;
-
+	public Image speechBubbleBackground;
 	GameObject prevObj = null;
 
-	// Use this for initialization
 	void Start () {
+		speechBubbleBackground.enabled = false;
 	}
 
-	// Update is called once per frame
 	void Update () {
 		bool didChange = false;
 		if (Input.GetKeyDown (KeyCode.Q)) {
@@ -39,27 +39,29 @@ public class assetSpawnMatrix : MonoBehaviour {
 			Destroy (prevObj);
 		
 		if (answer == "correct")
-			InstantiateGameObjectWithTransform(correct);
+			InstantiateWithTransform(correct);
 		else if (answer == "wrong")
-			InstantiateGameObjectWithTransform(wrong);
+			InstantiateWithTransform(wrong);
 		else if (answer == "correctcorrect")
-			InstantiateGameObjectWithTransform(correctcorrect);
+			InstantiateWithTransform(correctcorrect);
 		else if (answer == "correctwrong")
-			InstantiateGameObjectWithTransform(correctwrong);
+			InstantiateWithTransform(correctwrong);
 		else if (answer == "wrongcorrect")
-			InstantiateGameObjectWithTransform(wrongcorrect);
+			InstantiateWithTransform(wrongcorrect);
 		else if (answer == "wrongwrong")
-			InstantiateGameObjectWithTransform(wrongwrong);
+			InstantiateWithTransform(wrongwrong);
 		else if (answer == "correctcorrectcorrect")
-			InstantiateGameObjectWithTransform(correctcorrectcorrect);
+			InstantiateWithTransform(correctcorrectcorrect);
 	}
 
-	private void InstantiateGameObjectWithTransform(GameObject gObject) {
+	private void InstantiateWithTransform(GameObject gObject) {
 		if (prevObj != null) {
 			Destroy(prevObj);
 		}
 		prevObj = Instantiate (gObject);
 		prevObj.transform.SetParent(gameObject.transform);
 		prevObj.transform.position = transform.position;
+
+		speechBubbleBackground.enabled = true;
 	}
 }
