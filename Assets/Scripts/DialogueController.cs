@@ -92,17 +92,25 @@ public class DialogueController : MonoBehaviour {
 
 	public void OnClick (Button button) {
 		if (button == questionButton1) {
-			Debug.Log("clicking button 1");
-			local.SetRegular();
-		
+			PressedQuestionButton1();
 		} else if (button == questionButton2) {
-			Debug.Log("clicking button 2");
-			local.SetPuzzled();
-
+			PressedQuestionButton2();
 		} else
 			Debug.LogError ("Map the damn button in Dialogue GO!");
 
 		AnswerQuestion (button);
+	}
+
+	private void PressedQuestionButton1() {
+		Debug.Log("clicking button 1");
+		local.SetRegular();
+		spawnMatrix.AnswerQuestionCorrect();
+	}
+
+	private void PressedQuestionButton2() {
+		Debug.Log("clicking button 1");
+		local.SetPuzzled();
+		spawnMatrix.AnswerQuestionWrong();
 	}
 
 	public void AnswerQuestion (Button button) {

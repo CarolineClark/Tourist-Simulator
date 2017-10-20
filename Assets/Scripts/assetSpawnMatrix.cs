@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class assetSpawnMatrix : MonoBehaviour {
 
-	string answer = "";
+	public readonly string CORRECT = "correct";
+	public readonly string WRONG = "wrong";
 	public GameObject correct;
 	public GameObject wrong;
 	public GameObject correctcorrect;
@@ -20,21 +21,17 @@ public class assetSpawnMatrix : MonoBehaviour {
 		speechBubbleBackground.enabled = false;
 	}
 
-	void Update () {
-		bool didChange = false;
-		if (Input.GetKeyDown (KeyCode.Q)) {
-			answer += "correct";
-			didChange = true;
-		} else if (Input.GetKeyDown (KeyCode.W)) {
-			answer += "wrong";
-			didChange = true;
-		}
-
-		if (didChange)
-			AnswerQuestion (answer);
+	public void AnswerQuestionWrong() {
+		Debug.Log("answered question wrong");
+		AnswerQuestion(WRONG);
 	}
 
-	public void AnswerQuestion (string answers) {
+	public void AnswerQuestionCorrect() {
+		Debug.Log("answered question correct");
+		AnswerQuestion(CORRECT);
+	}
+
+	private void AnswerQuestion (string answer) {
 		if (prevObj != null)
 			Destroy (prevObj);
 		
