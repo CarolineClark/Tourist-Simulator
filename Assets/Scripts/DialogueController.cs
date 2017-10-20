@@ -40,6 +40,9 @@ public class DialogueController : MonoBehaviour {
 		questionLine.gameObject.SetActive (false);
 		questionButton1.gameObject.SetActive (false);
 		questionButton2.gameObject.SetActive (false);
+
+		questionButton1.onClick.AddListener(delegate() {OnClick (questionButton1);});
+		questionButton2.onClick.AddListener(delegate() {OnClick (questionButton2);});
 	}
 	
 	// Update is called once per frame
@@ -89,9 +92,13 @@ public class DialogueController : MonoBehaviour {
 
 	public void OnClick (Button button) {
 		if (button == questionButton1) {
+			Debug.Log("clicking button 1");
+			local.SetRegular();
 		
 		} else if (button == questionButton2) {
-			
+			Debug.Log("clicking button 2");
+			local.SetPuzzled();
+
 		} else
 			Debug.LogError ("Map the damn button in Dialogue GO!");
 
