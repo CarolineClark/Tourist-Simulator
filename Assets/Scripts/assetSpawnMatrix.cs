@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class assetSpawnMatrix : MonoBehaviour {
 
+	private string answer = "";
 	public readonly string CORRECT = "correct";
 	public readonly string WRONG = "wrong";
 	// public GameObject correct;
@@ -27,12 +28,14 @@ public class assetSpawnMatrix : MonoBehaviour {
 
 	public void AnswerQuestionWrong(string language) {
 		Debug.Log("answered question wrong");
-		AnswerQuestion(language, WRONG);
+		answer += WRONG;
+		AnswerQuestion(language, answer);
 	}
 
 	public void AnswerQuestionCorrect(string language) {
 		Debug.Log("answered question correct");
-		AnswerQuestion(language, CORRECT);
+		answer += CORRECT;
+		AnswerQuestion(language, answer);
 	}
 
 	private void AnswerQuestion (string language, string answer) {

@@ -13,7 +13,7 @@ public class LocalSpawner : MonoBehaviour {
 	void Start () {
 		obj = Instantiate (Resources.Load<GameObject>(assetName));
 		obj.transform.SetParent(gameObject.transform);
-        if (animationName != null) {
+        if (animationName != null && animationName != "") {
             obj.GetComponent<Animator>().Play(animationName);
         }
 	}
