@@ -15,6 +15,7 @@ public class DialogueController : MonoBehaviour {
 	public Text questionButton2Text;
 	public ExpressionController tourist;
 	public ExpressionController local;
+	public assetSpawnMatrix spawnMatrix;
 
 	DialogueConfig config;
 	DialogueState state;
