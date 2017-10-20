@@ -80,4 +80,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b70966c27c2648a8bad9fe6536b754d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  assetName: German-regular
+  assetName: Head
+  animationName: talking
