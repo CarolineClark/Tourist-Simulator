@@ -1,0 +1,30 @@
+{
+	"language": "german",
+	"narration": "You decided to move to Germany for a year. Unfortunately, instead of moving to Berlin, where everyone speaks English, you went to Hamburg.\nFinally you find a flat that allows pet ownership, so you decide to call a kennel to get yourself a dog.",
+	"dialogue": {
+		"line1": {
+			"question_base": "Hallo! Ich habe gehört, Sie haben...",
+			"question_right": "Doggen",
+			"question_wrong": "Drogen",
+			"response_right": "Hallo! Ja, ich habe Doggen.",
+			"response_wrong": "Hallo. Sie müssen die falsche Nummer haben. Ich habe Doggen. Ja. Nur Doggen. Definitiv keine Drogen. Nein.",
+			"response_either": "Warum sind Sie an meinen Doggen interessiert?"
+		},
+		"line2": {
+			"question_base": "Ich möchte eine Ihrer Doggen...",
+			"question_right": "kaufen",
+			"question_wrong": "kochen",
+			"response_right": "Sehr gut, dann sind Sie hier richtig!",
+			"response_wrong": "Wie bitte?! Nein, Sie können meine Doggen natürlich nicht kochen!",
+			"response_either": "Warum wollen Sie überhaupt einen Hund?"
+		},
+		"line3": {
+			"question_base": "Ich wollte immer schon eine Dogge zum...",
+			"question_right": "Spielen",
+			"question_wrong": "Sterben",
+			"response_right": "Dann sind Sie ja genau richtig, meine Doggen sind sehr verspielt.\nEpilogue: You had a great time with your new best friend, playing fetch in a park.",
+			"response_wrong": "Okaaay. Kommen Sie einfach bei mir vorbei und sehen Sie sich meine Hunde an.\nEpilogue: When you arrive police already awaits. You spend the next 2 weeks in jail, making friends with Rob, a local car thief.",
+			"response_either": ""
+		}
+	}
+}

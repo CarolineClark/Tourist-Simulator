@@ -1,0 +1,48 @@
+
+PLAYER
+Hallo! Ich habe gehört, Sie haben...
+a Drogen
+b Doggen
+
+SHOP OWNER
+If a
+Hallo. Sie müssen die falsche Nummer haben. Ich habe Doggen. Ja. Nur Doggen. Definitiv keine Drogen. Nein.
+
+If b
+Hallo! Ja, ich habe Doggen.
+
+Both
+Warum sind Sie an meinen Doggen interessiert?
+
+
+
+PLAYER
+Ich möchte eine Ihrer Doggen...
+a kaufen
+b kochen
+
+SHOP OWNER
+If a
+Sehr gut, dann sind Sie hier richtig!
+
+If b
+Wie bitte?! Nein, Sie können meine Doggen natürlich nicht kochen!
+
+Both
+Warum wollen Sie überhaupt einen Hund?
+
+
+
+PLAYER
+Ich wollte immer schon eine Dogge zum...
+a Spielen
+b Sterben
+
+SHOP OWNER
+If a
+Dann sind Sie ja genau richtig, meine Doggen sind sehr verspielt.
+Epilogue: You had a great time with your new best friend, playing fetch in a park.
+
+If b
+Okaaay. Kommen Sie einfach bei mir vorbei und sehen Sie sich meine Hunde an.
+Epilogue: When you arrive police already awaits. You spend the next 2 weeks in jail, making friends with Rob, a local car thief.
