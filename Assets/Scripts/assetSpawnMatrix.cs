@@ -39,18 +39,27 @@ public class assetSpawnMatrix : MonoBehaviour {
 			Destroy (prevObj);
 		
 		if (answer == "correct")
-			prevObj = Instantiate (correct);
+			InstantiateGameObjectWithTransform(correct);
 		else if (answer == "wrong")
-			prevObj = Instantiate (wrong);
+			InstantiateGameObjectWithTransform(wrong);
 		else if (answer == "correctcorrect")
-			prevObj = Instantiate (correctcorrect);
+			InstantiateGameObjectWithTransform(correctcorrect);
 		else if (answer == "correctwrong")
-			prevObj = Instantiate (correctwrong);
+			InstantiateGameObjectWithTransform(correctwrong);
 		else if (answer == "wrongcorrect")
-			prevObj = Instantiate (wrongcorrect);
+			InstantiateGameObjectWithTransform(wrongcorrect);
 		else if (answer == "wrongwrong")
-			prevObj = Instantiate (wrongwrong);
+			InstantiateGameObjectWithTransform(wrongwrong);
 		else if (answer == "correctcorrectcorrect")
-			prevObj = Instantiate (correctcorrectcorrect);
+			InstantiateGameObjectWithTransform(correctcorrectcorrect);
+	}
+
+	private void InstantiateGameObjectWithTransform(GameObject gObject) {
+		if (prevObj != null) {
+			Destroy(prevObj);
+		}
+		prevObj = Instantiate (gObject);
+		prevObj.transform.SetParent(gameObject.transform);
+		prevObj.transform.position = transform.position;
 	}
 }
