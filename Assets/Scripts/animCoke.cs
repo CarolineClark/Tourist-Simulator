@@ -7,15 +7,6 @@ public class animCoke : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator> ();
-		//anim.Play;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (Input.GetKeyDown(KeyCode.B))
-		{
-			anim.SetTrigger("take");
-
-		}
+		anim.SetTrigger("take");
 	}
 }
